@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MainLayout } from './components/MainLayout';
+import { Home } from './pages/Home';
 
 function App() {
   return (
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          <Route path="/" element={<div className="text-white p-10 text-center text-2xl">მთავარი გვერდის შიგთავსი იქნება აქ</div>} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
