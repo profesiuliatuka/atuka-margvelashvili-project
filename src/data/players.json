@@ -1,0 +1,218 @@
+[
+  {
+    "id": 2796,
+    "number": 1,
+    "name": "ოთო გოშაძე",
+    "position": "მეკარე",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/GOSHADZE.png?itok=InoMWPET"
+  },
+  {
+    "id": 7313,
+    "number": 31,
+    "name": "ფილიპ კლიაიჩი",
+    "position": "მეკარე",
+    "country": "სერბეთი",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/KLJAJIC.png?itok=w4bfJYBG"
+  },
+  {
+    "id": 2889,
+    "number": 33,
+    "name": "დემეტრე ბულისკერია",
+    "position": "მეკარე",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/FK2A2467.png?itok=cyQDTaqy"
+  },
+  {
+    "id": 8104,
+    "number": 2,
+    "name": "ვარლეი და სილვა",
+    "position": "მცველი",
+    "country": "ბრაზილია",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/WARLEY.png?itok=5pfBG-47"
+  },
+  {
+    "id": 8835,
+    "number": 3,
+    "name": "ჟორჟინიო",
+    "position": "მცველი",
+    "country": "პორტუგალია",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 8832,
+    "number": 4,
+    "name": "მატეო შიმიჩი",
+    "position": "მცველი",
+    "country": "ხორვატია",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/SIMIC.png?itok=37y1rJI9"
+  },
+  {
+    "id": 2805,
+    "number": 5,
+    "name": "ცოტნე ნადარაია",
+    "position": "მცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/NADARAIA.png?itok=WQKrd487"
+  },
+  {
+    "id": 8674,
+    "number": 6,
+    "name": "მოჰამედ შერიფი",
+    "position": "მცველი",
+    "country": "გერმანია",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/CHERIF.png?itok=-QjDCPIi"
+  },
+  {
+    "id": 8672,
+    "number": 13,
+    "name": "გლიბ კატკოვი",
+    "position": "მცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 8801,
+    "number": 15,
+    "name": "ლუკა კუპრავა",
+    "position": "მცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 7360,
+    "number": 22,
+    "name": "დათო ბუკია",
+    "position": "მცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/BUKIA.png?itok=YD7an2ep"
+  },
+  {
+    "id": 134,
+    "number": 27,
+    "name": "ლევან ხარაბაძე",
+    "position": "მცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 2810,
+    "number": 7,
+    "name": "ვლადიმერ მამუჩაშვილი",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/MAMUCHASHVILI.png?itok=DF3kUC67"
+  },
+  {
+    "id": 8746,
+    "number": 8,
+    "name": "მატეო ითრაქი",
+    "position": "ნახევარმცველი",
+    "country": "ხორვატია",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/ITRAK.png?itok=nGRkIktG"
+  },
+  {
+    "id": 7892,
+    "number": 14,
+    "name": "ფელიპე პირესი",
+    "position": "ნახევარმცველი",
+    "country": "ბრაზილია",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/PIRES_0.png?itok=NoMlfLnS"
+  },
+  {
+    "id": 8833,
+    "number": 16,
+    "name": "სორი მანე",
+    "position": "ნახევარმცველი",
+    "country": "გვინეა-ბისაუ",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/MANE.png?itok=kw_7KL57"
+  },
+  {
+    "id": 9458,
+    "number": 17,
+    "name": "ვიკტორ ბლიზნიჩენკო",
+    "position": "ნახევარმცველი",
+    "country": "უკრაინა",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/IMG_9332.png?itok=iCD5QZQZ"
+  },
+  {
+    "id": 8677,
+    "number": 18,
+    "name": "კისლე ზიტა",
+    "position": "ნახევარმცველი",
+    "country": "საფრანგეთი",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/ZITA.png?itok=QVABoSNh"
+  },
+  {
+    "id": 8999,
+    "number": 19,
+    "name": "დავით პერტაია",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 8822,
+    "number": 21,
+    "name": "თამაზ გოლეთიანი",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/GOLETIANI.png?itok=S_-afx6y"
+  },
+  {
+    "id": 7123,
+    "number": 26,
+    "name": "ალეკო ბასილაძე",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/BASILADZE.png?itok=A-OgWcF2"
+  },
+  {
+    "id": 5913,
+    "number": 29,
+    "name": "მალხაზ ჩიტაიშვილი",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/themes/custom/omedia/images/player-default-cutout.svg"
+  },
+  {
+    "id": 9471,
+    "number": 30,
+    "name": "თორნიკე ანთია",
+    "position": "ნახევარმცველი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/ANTIA.png?itok=F9lYDRfv"
+  },
+  {
+    "id": 8834,
+    "number": 9,
+    "name": "კომნენ ანდრიჩი",
+    "position": "თავდამსხმელი",
+    "country": "სერბეთი",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/ANDRIC.png?itok=4syFYqLL"
+  },
+  {
+    "id": 2819,
+    "number": 10,
+    "name": "გიორგი კოხრეიძე",
+    "position": "თავდამსხმელი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/KOKHREIDZE.png?itok=UqBvhqBs"
+  },
+  {
+    "id": 5942,
+    "number": 11,
+    "name": "გიორგი არაბიძე",
+    "position": "თავდამსხმელი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/ARABIDZE.png?itok=DlK13ab5"
+  },
+  {
+    "id": 9461,
+    "number": 35,
+    "name": "დიეგო დეისაძე",
+    "position": "თავდამსხმელი",
+    "country": "საქართველო",
+    "image": "https://www.erovnuliliga.ge/sites/default/files/styles/player_cutout_sm/public/2026-02/DEISADZE.png?itok=ybAC6Ppg"
+  }
+]

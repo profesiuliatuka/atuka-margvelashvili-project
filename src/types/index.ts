@@ -5,25 +5,37 @@ export interface NavLink {
 
 export interface Player {
   id: number;
-  firstName: string;
-  lastName: string;
-  squadNumber: number;
-  position: 'Goalkeeper' | 'Defender' | 'Midfielder' | 'Forward';
-  nationality: string;
-  imageUrl: string;
-  isCaptain?: boolean;
+  number: number;
+  name: string;
+  position: 'მეკარე' | 'მცველი' | 'ნახევარმცველი' | 'თავდამსხმელი';
+  country: string;
+  image: string;
 }
 
-export interface Match {
+export interface TeamInfo {
+  name: string;
+  shortName: string;
+  logo: string;
+}
+
+export interface MatchEvent {
+  type: string;
+  time: string;
+  player: string;
+  detail: string;
+}
+
+export interface MatchData {
   id: number;
-  opponent: string;
-  opponentLogoUrl: string;
-  date: string; 
-  competition: string;
-  isHomeMatch: boolean;
-  homeScore?: number;
-  awayScore?: number;
-  status: 'Upcoming' | 'Live' | 'Finished';
+  round: number;
+  date: string;
+  homeTeam: TeamInfo;
+  awayTeam: TeamInfo;
+  stadium: string;
+  status: 'Upcoming' | 'Finished';
+  homeScore: number | null;
+  awayScore: number | null;
+  events: MatchEvent[];
 }
 
 export interface NewsArticle {
