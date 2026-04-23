@@ -7,6 +7,7 @@ import { News } from './pages/News';
 import { Contact } from './pages/Contact';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Matches } from './pages/Matches';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/Matches" element={<Matches />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
