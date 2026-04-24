@@ -2,3 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BPG Nino Mtavruli';
+  src: url('./fonts/TeamFont/bpg-nino-mtavruli-bold-webfont.woff2') format('woff2'),
+    url('./fonts/TeamFont/bpg-nino-mtavruli-bold-webfont.woff') format('woff'),
+    url('./fonts/TeamFont/bpg-nino-mtavruli-bold-webfont.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuadroSquare';
+  src: url('./fonts/QuadroSquare/bpg-quadrosquare-mtavruli-webfont.woff2') format('woff2'),
+       url('./fonts/QuadroSquare/bpg-quadrosquare-mtavruli-webfont.woff') format('woff'),
+       url('./fonts/QuadroSquare/bpg-quadrosquare-mtavruli-webfont.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@layer base {
+  body {
+    font-family: 'QuadroSquare', sans-serif;
+  }
+}

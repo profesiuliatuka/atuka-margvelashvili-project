@@ -22,9 +22,12 @@ const countryFlags: Record<string, string> = {
   'საფრანგეთი': '🇫🇷',
 };
 
+type TeamFilter = 'All' | 'მეკარე' | 'მცველი' | 'ნახევარმცველი' | 'თავდამსხმელი';
+
 export const Team = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<TeamFilter>('All');
 
   useEffect(() => {
     document.title = 'გუნდი | FC Torpedo Kutaisi';
@@ -50,14 +53,38 @@ export const Team = () => {
     <div className="pt-10">
       <Section title="პირველი გუნდი">
 
-        <div className="flex items-center gap-3 mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">სეზონი:</span>
-          <span className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full text-sm font-black tracking-wider">
-            2026
-          </span>
-          <span className="text-zinc-600 text-xs font-bold uppercase tracking-widest ml-2">
-            {players.length} მოთამაშე
-          </span>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">სეზონი:</span>
+            <span className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full text-sm font-black tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+              2026
+            </span>
+            <span className="text-zinc-600 text-xs font-bold uppercase tracking-widest ml-2">
+              {players.length} მოთამაშე
+            </span>
+          </div>
+
+          <div className="flex flex-wrap justify-center sm:justify-start gap-2 p-1.5 bg-zinc-900/80 border border-zinc-800 rounded-2xl w-full sm:w-fit backdrop-blur-md shadow-xl">
+            {[
+              { key: 'All', label: 'ყველა' },
+              { key: 'მეკარე', label: 'მეკარე' },
+              { key: 'მცველი', label: 'მცველი' },
+              { key: 'ნახევარმცველი', label: 'ნახევარმცველი' },
+              { key: 'თავდამსხმელი', label: 'თავდამსხმელი' }
+            ].map((f) => (
+              <button
+                key={f.key}
+                onClick={() => setFilter(f.key as TeamFilter)}
+                className={`px-4 md:px-5 py-2 md:py-2.5 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                  filter === f.key 
+                  ? 'bg-emerald-500 text-zinc-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] scale-100' 
+                  : 'text-zinc-400 hover:text-white hover:bg-white/5 scale-95 hover:scale-100'
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {loading ? (
@@ -68,17 +95,19 @@ export const Team = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-12">
-            {sections.map(({ key, label }) => {
+          <div key={filter} className="flex flex-col gap-16 animate-fade-in-up">
+            {sections
+              .filter(s => filter === 'All' || s.key === filter)
+              .map(({ key, label }) => {
               const group = grouped[key] || [];
               if (group.length === 0) return null;
               
               return (
                 <div key={key}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
-                    <h3 className="text-xl font-black uppercase tracking-widest text-zinc-300">{label}</h3>
-                    <span className="text-zinc-600 text-sm font-bold">— {group.length}</span>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-2 h-8 bg-emerald-600 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+                    <h3 className="text-2xl font-black uppercase tracking-widest text-white drop-shadow-md">{label}</h3>
+                    <span className="text-zinc-600 text-sm font-bold bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800 ml-2">{group.length}</span>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
@@ -89,7 +118,7 @@ export const Team = () => {
                       return (
                         <div
                           key={item.id}
-                          className="group relative bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-500 shadow-2xl hover:shadow-emerald-900/20 hover:shadow-xl hover:-translate-y-1"
+                          className="group relative bg-zinc-950/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-500 shadow-2xl hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] hover:-translate-y-1"
                         >
                           <div className="absolute top-3 left-3 z-20">
                             <div className={`px-2 py-1 rounded-lg border text-[10px] font-black uppercase tracking-wider ${posColorClass}`}>
@@ -103,20 +132,21 @@ export const Team = () => {
                             </div>
                           </div>
 
-                          <div className="relative aspect-[3/4] overflow-hidden bg-zinc-900 flex items-end justify-center">
-                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent z-10" />
-                            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-zinc-950 to-transparent z-10" />
+                          <div className="relative aspect-[3/4] overflow-hidden bg-zinc-900 flex items-end justify-center rounded-2xl group-hover:rounded-none transition-all duration-500">
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent z-10" />
+                            <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
+                            <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-zinc-950 to-transparent z-10" />
 
                             <img
                               src={item.image}
                               alt={item.name}
                               loading="lazy"
-                              className="relative z-10 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                              className="relative z-10 w-full h-full object-cover object-top group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-700 ease-out drop-shadow-2xl"
                             />
                           </div>
 
-                          <div className="relative z-20 p-4 -mt-6">
-                            <h3 className="text-sm md:text-base font-black text-white uppercase tracking-tight mb-1 truncate text-center">
+                          <div className="relative z-20 p-5 -mt-8 bg-gradient-to-t from-zinc-950 via-zinc-950 to-transparent pt-10">
+                            <h3 className="text-sm md:text-base font-black text-white uppercase tracking-tight mb-2 truncate text-center group-hover:text-emerald-400 transition-colors duration-300">
                               {item.name}
                             </h3>
                             <div className="flex items-center justify-center gap-2 text-xs flex-wrap">
