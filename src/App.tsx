@@ -8,6 +8,8 @@ import { Contact } from './pages/Contact';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Matches } from './pages/Matches';
 import { NotFound } from './pages/NotFound';
+import { Terms } from './pages/Terms';
+import { Privacy } from './pages/Privacy';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/Matches" element={<Matches />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>

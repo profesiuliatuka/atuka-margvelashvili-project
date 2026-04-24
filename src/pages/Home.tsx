@@ -102,7 +102,7 @@ export const Home = () => {
               </div>
 
               {/* Date & Location Pill */}
-              <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-4 bg-zinc-900/50 backdrop-blur-md px-6 md:px-10 py-4 rounded-3xl border border-white/5 shadow-xl w-full">
+              <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-4 bg-zinc-900/50 backdrop-blur-md px-6 md:px-10 py-4 rounded-3xl border border-white/5 shadow-xl w-fit">
                 <div className="flex items-center gap-3">
                   <span className="text-xl">📅</span>
                   <span className="text-white font-bold uppercase tracking-widest text-xs md:text-sm">

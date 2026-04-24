@@ -71,8 +71,8 @@ export const Footer = ({ links }: FooterProps) => {
             &copy; {new Date().getFullYear()} FC Torpedo Kutaisi. ყველა უფლება დაცულია.
           </div>
           <div className="flex items-center gap-6 text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-600">
-            <a href="#" className="hover:text-white transition-colors">წესები და პირობები</a>
-            <a href="#" className="hover:text-white transition-colors">კონფიდენციალურობა</a>
+            <Link to="/terms" className="hover:text-white transition-colors">წესები და პირობები</Link>
+            <Link to="/privacy" className="hover:text-white transition-colors">კონფიდენციალურობა</Link>
           </div>
         </div>
       </div>

@@ -87,10 +87,10 @@ export const Header = ({ links }: HeaderProps) => {
               className="p-2 transition-colors duration-300"
               aria-label="მენიუ"
             >
-              <div className="w-6 h-4 flex flex-col justify-between relative">
-                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-left ${isOpen ? 'rotate-45 translate-x-1 -translate-y-1' : ''}`} />
-                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-left ${isOpen ? '-rotate-45 translate-x-1 translate-y-1' : ''}`} />
+              <div className="w-6 h-5 flex flex-col justify-between relative">
+                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[9px]' : ''}`} />
+                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-center ${isOpen ? 'opacity-0 scale-x-0' : ''}`} />
+                <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-center ${isOpen ? '-rotate-45 -translate-y-[9px]' : ''}`} />
               </div>
             </button>
           </div>
