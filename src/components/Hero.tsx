@@ -1,18 +1,20 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import heroImage from '../assets/Hero_Image.webp';
 
 interface HeroProps {
   title: string;
   slogan: string;
 }
 
-export const Hero = ({ title, slogan }: HeroProps) => {
+export const Hero = memo(({ title, slogan }: HeroProps) => {
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000" 
+          src={heroImage} 
           alt="Stadium" 
           className="w-full h-full object-cover"
         />
@@ -62,4 +64,4 @@ export const Hero = ({ title, slogan }: HeroProps) => {
       <div className="absolute -right-1/4 bottom-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none z-10" />
     </section>
   );
-};
+});

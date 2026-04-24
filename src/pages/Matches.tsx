@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { Section } from '../components/Section';
 import matchesData from '../data/matches.json';
 import type { MatchData } from '../types';
@@ -7,14 +7,15 @@ type MatchFilter = 'All' | 'Finished' | 'Upcoming';
 type SortOrder = 'asc' | 'desc';
 
 export const Matches = () => {
-  const [fixtures, setFixtures] = useState<MatchData[]>([]);
   const [filter, setFilter] = useState<MatchFilter>('All');
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 
   useEffect(() => {
     document.title = 'კალენდარი და შედეგები | FC Torpedo Kutaisi';
+  }, []);
 
-    let filteredData = matchesData as MatchData[];
+  const fixtures = useMemo(() => {
+    let filteredData = [...(matchesData as MatchData[])];
 
     if (filter === 'Finished') {
       filteredData = filteredData.filter(m => m.status === 'Finished');
@@ -28,7 +29,7 @@ export const Matches = () => {
       filteredData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
 
-    setFixtures(filteredData);
+    return filteredData;
   }, [filter, sortOrder]);
 
   const getResultBadge = (item: MatchData) => {
@@ -52,6 +53,8 @@ export const Matches = () => {
     if (torpedoGoals < oppGoals) return 'text-red-400';
     return 'text-zinc-300';
   };
+
+  const toggleSortOrder = useCallback(() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc'), []);
 
   return (
     <div className="pt-10">
@@ -89,7 +92,7 @@ export const Matches = () => {
           </div>
 
           <button
-            onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
+            onClick={toggleSortOrder}
             className="flex items-center justify-center gap-3 px-6 py-3 bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl text-zinc-300 hover:text-emerald-400 transition-all duration-300 shadow-lg group w-full sm:w-fit"
           >
             <span className="text-xs font-bold uppercase tracking-widest">
@@ -136,7 +139,7 @@ export const Matches = () => {
                     <div className="flex flex-col items-center gap-3 w-20 sm:w-28">
                       <div className="relative">
                         <div className="absolute inset-0 bg-white/5 rounded-full blur-lg" />
-                        <img src={item.homeTeam.logo} alt={item.homeTeam.name} className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-2xl" />
+                        <img src={item.homeTeam.logo} alt={item.homeTeam.name} loading="lazy" className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-2xl" />
                       </div>
                       <span className="font-team font-black uppercase text-[10px] sm:text-xs text-center leading-tight text-white">{item.homeTeam.name}</span>
                       <span className="text-zinc-600 text-[8px] sm:text-[10px] uppercase tracking-widest font-bold">სახლი</span>
@@ -156,7 +159,7 @@ export const Matches = () => {
                     <div className="flex flex-col items-center gap-3 w-20 sm:w-28">
                       <div className="relative">
                         <div className="absolute inset-0 bg-white/5 rounded-full blur-lg" />
-                        <img src={item.awayTeam.logo} alt={item.awayTeam.name} className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-2xl" />
+                        <img src={item.awayTeam.logo} alt={item.awayTeam.name} loading="lazy" className="relative w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-2xl" />
                       </div>
                       <span className="font-team font-black uppercase text-[10px] sm:text-xs text-center leading-tight text-white">{item.awayTeam.name}</span>
                       <span className="text-zinc-600 text-[8px] sm:text-[10px] uppercase tracking-widest font-bold">სტუმარი</span>

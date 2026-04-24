@@ -25,6 +25,7 @@ export const About = () => {
             <img 
               src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000" 
               alt="Ramaz Shengelia Stadium" 
+              loading="lazy"
               className="relative rounded-2xl border border-zinc-800 shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
             />
           </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Hero } from '../components/Hero';
 import { Section } from '../components/Section';
 import { Card } from '../components/Card';
@@ -7,15 +7,12 @@ import matchesData from '../data/matches.json';
 import type { MatchData } from '../types';
 
 export const Home = () => {
-  const [nextMatch, setNextMatch] = useState<MatchData | null>(null);
+  const nextMatch = useMemo(() => {
+    return (matchesData as MatchData[]).find(m => m.status === 'Upcoming') || null;
+  }, []);
 
   useEffect(() => {
     document.title = 'მთავარი | FC Torpedo Kutaisi';
-
-    const upcomingMatch = (matchesData as MatchData[]).find(m => m.status === 'Upcoming');
-    if (upcomingMatch) {
-      setNextMatch(upcomingMatch);
-    }
   }, []);
 
   return (
@@ -71,6 +68,7 @@ export const Home = () => {
                   <img
                     src={nextMatch.homeTeam.logo}
                     alt={nextMatch.homeTeam.name}
+                    loading="lazy"
                     className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-4 sm:mb-6 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover/team:scale-110 group-hover/team:-translate-y-2 transition-all duration-500 relative z-10"
                   />
                   <span className="font-team text-white font-black uppercase tracking-widest text-sm md:text-base text-center relative z-10">
@@ -92,6 +90,7 @@ export const Home = () => {
                   <img
                     src={nextMatch.awayTeam.logo}
                     alt={nextMatch.awayTeam.name}
+                    loading="lazy"
                     className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-4 sm:mb-6 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover/team:scale-110 group-hover/team:-translate-y-2 transition-all duration-500 relative z-10"
                   />
                   <span className="font-team text-white font-black uppercase tracking-widest text-sm md:text-base text-center relative z-10">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { NavLink } from '../types';
 
@@ -6,7 +6,7 @@ interface HeaderProps {
   links: NavLink[];
 }
 
-export const Header = ({ links }: HeaderProps) => {
+export const Header = memo(({ links }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -19,9 +19,14 @@ export const Header = ({ links }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
-  }, [location]);
+  }, [location.pathname]);
+
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-500 ${
@@ -41,6 +46,7 @@ export const Header = ({ links }: HeaderProps) => {
                 <img
                   src={teamLogo}
                   alt="Torpedo Kutaisi"
+                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -83,7 +89,7 @@ export const Header = ({ links }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               className="p-2 transition-colors duration-300"
               aria-label="მენიუ"
             >
@@ -106,7 +112,7 @@ export const Header = ({ links }: HeaderProps) => {
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeMenu}
                   className={`block text-sm font-black uppercase tracking-widest transition-colors duration-300 ${
                     isActive
                       ? 'text-emerald-400'
@@ -122,4 +128,4 @@ export const Header = ({ links }: HeaderProps) => {
       </div>
     </header>
   );
-};
+});

@@ -1,7 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Section } from '../components/Section';
 import playersData from '../data/players.json';
 import type { Player } from '../types';
+
+import georgiaFlag from '../assets/Flags/Georgia.webp';
+import serbiaFlag from '../assets/Flags/Serbia.webp';
+import brazilFlag from '../assets/Flags/Brazil.webp';
+import portugalFlag from '../assets/Flags/Portugal.webp';
+import croatiaFlag from '../assets/Flags/Croatia.webp';
+import germanyFlag from '../assets/Flags/Germany.webp';
+import guineaBissauFlag from '../assets/Flags/Guinea_Bissau.webp';
+import ukraineFlag from '../assets/Flags/Ukraine.webp';
+import franceFlag from '../assets/Flags/France.webp';
 
 const positionColor: Record<string, string> = {
   'მეკარე': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
@@ -11,43 +21,40 @@ const positionColor: Record<string, string> = {
 };
 
 const countryFlags: Record<string, string> = {
-  'საქართველო': '🇬🇪',
-  'სერბეთი': '🇷🇸',
-  'ბრაზილია': '🇧🇷',
-  'პორტუგალია': '🇵🇹',
-  'ხორვატია': '🇭🇷',
-  'გერმანია': '🇩🇪',
-  'გვინეა-ბისაუ': '🇬🇼',
-  'უკრაინა': '🇺🇦',
-  'საფრანგეთი': '🇫🇷',
+  'საქართველო': georgiaFlag,
+  'სერბეთი': serbiaFlag,
+  'ბრაზილია': brazilFlag,
+  'პორტუგალია': portugalFlag,
+  'ხორვატია': croatiaFlag,
+  'გერმანია': germanyFlag,
+  'გვინეა-ბისაუ': guineaBissauFlag,
+  'უკრაინა': ukraineFlag,
+  'საფრანგეთი': franceFlag,
 };
+
+const POSITION_ORDER = ['მეკარე', 'მცველი', 'ნახევარმცველი', 'თავდამსხმელი'];
 
 type TeamFilter = 'All' | 'მეკარე' | 'მცველი' | 'ნახევარმცველი' | 'თავდამსხმელი';
 
 export const Team = () => {
-  const [players, setPlayers] = useState<Player[]>([]);
-  const [loading, setLoading] = useState(true);
+  const players = useMemo(() => playersData as Player[], []);
   const [filter, setFilter] = useState<TeamFilter>('All');
 
   useEffect(() => {
     document.title = 'გუნდი | FC Torpedo Kutaisi';
-    setPlayers(playersData as Player[]);
-    setLoading(false);
   }, []);
 
-  const positionOrder = ['მეკარე', 'მცველი', 'ნახევარმცველი', 'თავდამსხმელი'];
-  
-  const grouped = positionOrder.reduce((acc, pos) => {
+  const grouped = useMemo(() => POSITION_ORDER.reduce((acc, pos) => {
     acc[pos] = players.filter((p) => p.position === pos);
     return acc;
-  }, {} as Record<string, Player[]>);
+  }, {} as Record<string, Player[]>), [players]);
 
   const sections = [
     { key: 'მეკარე', label: 'მეკარეები' },
     { key: 'მცველი', label: 'მცველები' },
     { key: 'ნახევარმცველი', label: 'ნახევარმცველები' },
     { key: 'თავდამსხმელი', label: 'თავდამსხმელები' },
-  ];
+  ] as const;
 
   return (
     <div className="pt-10">
@@ -87,14 +94,8 @@ export const Team = () => {
           </div>
         </div>
 
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-32 gap-5">
-            <div className="relative w-16 h-16">
-              <div className="absolute inset-0 border-4 border-zinc-800 rounded-full" />
-              <div className="absolute inset-0 border-4 border-transparent border-t-emerald-500 rounded-full animate-spin" />
-            </div>
-          </div>
-        ) : (
+        {(() => {
+          return (
           <div key={filter} className="flex flex-col gap-16 animate-fade-in-up">
             {sections
               .filter(s => filter === 'All' || s.key === filter)
@@ -113,7 +114,7 @@ export const Team = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
                     {group.map((item) => {
                       const posColorClass = positionColor[item.position] || 'bg-zinc-700/20 text-zinc-400 border-zinc-600/30';
-                      const flag = countryFlags[item.country] || '🌍';
+                      const flagSrc = countryFlags[item.country];
 
                       return (
                         <div
@@ -151,7 +152,12 @@ export const Team = () => {
                             </h3>
                             <div className="flex items-center justify-center gap-2 text-xs flex-wrap">
                               <span className="text-zinc-400 font-bold flex items-center gap-1.5">
-                                <span className="text-sm">{flag}</span> {item.country}
+                                {flagSrc ? (
+                                  <img src={flagSrc} alt={item.country} className="w-6 h-6 object-contain rounded-[2px]" />
+                                ) : (
+                                  <span className="text-base">🌍</span>
+                                )}
+                                <span>{item.country}</span>
                               </span>
                             </div>
                           </div>
@@ -163,7 +169,8 @@ export const Team = () => {
               );
             })}
           </div>
-        )}
+        );
+        })()}
       </Section>
     </div>
   );

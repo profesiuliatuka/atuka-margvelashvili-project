@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 
 interface CardProps {
   title: string;
@@ -6,14 +6,18 @@ interface CardProps {
   description: string;
 }
 
-export const Card = ({ title, image, description }: CardProps) => {
+export const Card = memo(({ title, image, description }: CardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = useCallback(() => setIsOpen(true), []);
+  const handleClose = useCallback(() => setIsOpen(false), []);
+  const stopPropagation = useCallback((e: React.MouseEvent) => e.stopPropagation(), []);
 
   return (
     <>
       {/* Card */}
       <div
-        onClick={() => setIsOpen(true)}
+        onClick={handleOpen}
         className="relative bg-zinc-900 border border-white/5 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-500 group cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] hover:-translate-y-2 will-change-transform"
       >
         <div className="aspect-[4/3] overflow-hidden relative rounded-t-[2rem]">
@@ -21,6 +25,7 @@ export const Card = ({ title, image, description }: CardProps) => {
           <img
             src={image}
             alt={title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           />
 
@@ -51,17 +56,17 @@ export const Card = ({ title, image, description }: CardProps) => {
       {isOpen && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
         >
 
           {/* Modal Content */}
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={stopPropagation}
             className="relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
           >
             {/* Close Button */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
               className="absolute top-5 right-5 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
             >
               ✕
@@ -73,6 +78,7 @@ export const Card = ({ title, image, description }: CardProps) => {
               <img
                 src={image}
                 alt={title}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -91,4 +97,4 @@ export const Card = ({ title, image, description }: CardProps) => {
       )}
     </>
   );
-};
+});

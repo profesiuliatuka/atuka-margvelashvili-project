@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import type { NavLink } from '../types';
 
@@ -5,7 +6,7 @@ interface FooterProps {
   links: NavLink[];
 }
 
-export const Footer = ({ links }: FooterProps) => {
+export const Footer = memo(({ links }: FooterProps) => {
   return (
     <footer className="relative bg-zinc-950 text-zinc-400 pt-20 pb-10 border-t border-white/5 mt-auto overflow-hidden">
       
@@ -26,9 +27,9 @@ export const Footer = ({ links }: FooterProps) => {
               ქუთაისის ტორპედოს ოფიციალური ვებსაიტი. სიახლეები, მატჩები, გუნდის შემადგენლობა და კლუბის ისტორია ერთ სივრცეში.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">FB</a>
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">IG</a>
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">YT</a>
+              <a href="https://www.facebook.com/FCTorpedoKutaisi1946/?locale=ka_GE" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">FB</a>
+              <a href="https://www.instagram.com/fctorpedokutaisi/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">IG</a>
+              <a href="https://www.youtube.com/fctorpedokutaisi" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 flex items-center justify-center text-xs font-bold hover:bg-white hover:text-zinc-950 hover:border-white transition-all duration-300">YT</a>
             </div>
           </div>
 
@@ -78,4 +79,4 @@ export const Footer = ({ links }: FooterProps) => {
       </div>
     </footer>
   );
-};
+});
