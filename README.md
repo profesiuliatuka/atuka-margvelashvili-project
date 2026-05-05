@@ -40,10 +40,10 @@ npm run dev
 ## 🖥️ სკრინშოტები
 
 ### Desktop
-![Desktop ხედი](./screenshots/desktop.png)
+![Desktop ხედი](./Screenshots/Desktop.png)
 
 ### Mobile
-![Mobile ხედი](./screenshots/mobile.png)
+![Mobile ხედი](./Screenshots/Mobile.png)
 
 ---
 
@@ -59,7 +59,7 @@ npm run dev
 
 | Performance | Accessibility | Best Practices | SEO |
 |-------------|---------------|----------------|-----|
-| [ქულა] | [ქულა] | [ქულა] | [ქულა] |
+| [98] | [99] | [95] | [98] |
 
 ---
 
