@@ -64,7 +64,7 @@ export const Header = memo(({ links }: HeaderProps) => {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:block">
+          <nav className="hidden md:block" aria-label="მთავარი ნავიგაცია">
             <ul className="flex items-center gap-6">
               {links.map((link) => {
                 const isActive = location.pathname === link.path;
@@ -92,6 +92,7 @@ export const Header = memo(({ links }: HeaderProps) => {
               onClick={toggleMenu}
               className="p-2 transition-colors duration-300"
               aria-label="მენიუ"
+              aria-expanded={isOpen}
             >
               <div className="w-6 h-5 flex flex-col justify-between relative">
                 <span className={`h-[2px] w-full bg-white rounded-full transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[9px]' : ''}`} />
@@ -104,7 +105,7 @@ export const Header = memo(({ links }: HeaderProps) => {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-zinc-950/80 backdrop-blur-3xl saturate-150 border-white/10 absolute w-full left-0 ${isOpen ? 'max-h-[400px] border-b shadow-2xl' : 'max-h-0 border-b-0'}`}>
+      <nav aria-label="მობილური ნავიგაცია" className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-zinc-950/80 backdrop-blur-3xl saturate-150 border-white/10 absolute w-full left-0 ${isOpen ? 'max-h-[400px] border-b shadow-2xl' : 'max-h-0 border-b-0'}`}>
         <ul className="px-6 py-6 space-y-4">
           {links.map((link) => {
             const isActive = location.pathname === link.path;
@@ -125,7 +126,7 @@ export const Header = memo(({ links }: HeaderProps) => {
             );
           })}
         </ul>
-      </div>
+      </nav>
     </header>
   );
 });

@@ -55,9 +55,10 @@ export const Contact = () => {
           <form className="space-y-6 relative z-10 mt-2" onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2 group">
-                <label className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.name && formik.errors.name ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>სახელი</label>
+                <label htmlFor="name" className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.name && formik.errors.name ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>სახელი</label>
                 <input 
                   type="text" 
+                  id="name"
                   name="name"
                   value={formik.values.name}
                   onChange={formik.handleChange}
@@ -70,9 +71,10 @@ export const Contact = () => {
                 ) : null}
               </div>
               <div className="space-y-2 group">
-                <label className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.email && formik.errors.email ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>ელ-ფოსტა</label>
+                <label htmlFor="email" className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.email && formik.errors.email ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>ელ-ფოსტა</label>
                 <input 
                   type="email" 
+                  id="email"
                   name="email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -86,9 +88,10 @@ export const Contact = () => {
               </div>
             </div>
             <div className="space-y-2 group">
-              <label className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.subject && formik.errors.subject ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>თემა</label>
+              <label htmlFor="subject" className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.subject && formik.errors.subject ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>თემა</label>
               <input 
                 type="text" 
+                id="subject"
                 name="subject"
                 value={formik.values.subject}
                 onChange={formik.handleChange}
@@ -101,8 +104,9 @@ export const Contact = () => {
               ) : null}
             </div>
             <div className="space-y-2 group">
-              <label className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.message && formik.errors.message ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>შეტყობინება</label>
+              <label htmlFor="message" className={`text-[10px] uppercase tracking-[0.2em] font-bold ml-1 transition-colors ${formik.touched.message && formik.errors.message ? 'text-red-500' : 'text-zinc-500 group-focus-within:text-emerald-400'}`}>შეტყობინება</label>
               <textarea 
+                id="message"
                 name="message"
                 value={formik.values.message}
                 onChange={formik.handleChange}

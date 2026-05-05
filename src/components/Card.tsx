@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, useEffect, memo } from 'react';
 
 interface CardProps {
   title: string;
@@ -12,6 +12,18 @@ export const Card = memo(({ title, image, description }: CardProps) => {
   const handleOpen = useCallback(() => setIsOpen(true), []);
   const handleClose = useCallback(() => setIsOpen(false), []);
   const stopPropagation = useCallback((e: React.MouseEvent) => e.stopPropagation(), []);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -55,25 +67,28 @@ export const Card = memo(({ title, image, description }: CardProps) => {
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
           onClick={handleClose}
         >
+          {/* Dark backdrop */}
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
 
-          {/* Modal Content */}
+          {/* Modal Content — centered */}
           <div
             onClick={stopPropagation}
-            className="relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
+            className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
           >
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+              aria-label="დახურვა"
+              className="sticky top-4 float-right mr-4 z-30 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
             >
               ✕
             </button>
 
             {/* Image */}
-            <div className="aspect-video overflow-hidden rounded-t-[2rem] relative">
+            <div className="aspect-video overflow-hidden rounded-t-[2rem] relative -mt-14">
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10" />
               <img
                 src={image}

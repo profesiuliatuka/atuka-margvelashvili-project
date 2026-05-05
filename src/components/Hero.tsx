@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/Hero_Image.webp';
 
 interface HeroProps {
   title: string;
@@ -14,8 +13,9 @@ export const Hero = memo(({ title, slogan }: HeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/60 to-zinc-950 z-10" />
         <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay z-10" />
         <img 
-          src={heroImage} 
-          alt="Stadium" 
+          src="/Hero_Image.webp" 
+          alt="ქუთაისის ტორპედოს სტადიონი" 
+          fetchPriority="high"
           className="w-full h-full object-cover"
         />
       </div>
