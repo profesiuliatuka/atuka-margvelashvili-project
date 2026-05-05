@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, memo } from 'react';
+import { createPortal } from 'react-dom';
 
 interface CardProps {
   title: string;
@@ -65,31 +66,33 @@ export const Card = memo(({ title, image, description }: CardProps) => {
       </div>
 
       {/* Modal */}
-      {isOpen && (
+      {isOpen && typeof document !== 'undefined' && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
           onClick={handleClose}
         >
           {/* Dark backdrop */}
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
 
           {/* Modal Content — centered */}
           <div
             onClick={stopPropagation}
-            className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
+            className="relative z-10 w-full max-w-3xl max-h-[90vh] flex flex-col overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
           >
             {/* Close Button */}
             <button
               onClick={handleClose}
               aria-label="დახურვა"
-              className="sticky top-4 float-right mr-4 z-30 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+              className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-red-500 hover:border-red-500 transition-all duration-300 shadow-xl"
             >
-              ✕
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
 
             {/* Image */}
-            <div className="aspect-video overflow-hidden rounded-t-[2rem] relative -mt-14">
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10" />
+            <div className="w-full aspect-video shrink-0 relative rounded-t-[2rem] overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10 pointer-events-none" />
               <img
                 src={image}
                 alt={title}
@@ -99,16 +102,17 @@ export const Card = memo(({ title, image, description }: CardProps) => {
             </div>
 
             {/* Text Content */}
-            <div className="p-8 md:p-10 -mt-12 relative z-20">
-              <h2 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-wide leading-tight">
+            <div className="p-6 md:p-10 relative z-20 shrink-0">
+              <h2 className="text-xl md:text-3xl font-black text-white mb-6 tracking-wide leading-tight">
                 {title}
               </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-medium">
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed font-medium whitespace-pre-wrap">
                 {description}
               </p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
