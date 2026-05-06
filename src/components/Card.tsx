@@ -14,7 +14,6 @@ export const Card = memo(({ title, image, description }: CardProps) => {
   const handleClose = useCallback(() => setIsOpen(false), []);
   const stopPropagation = useCallback((e: React.MouseEvent) => e.stopPropagation(), []);
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -28,7 +27,6 @@ export const Card = memo(({ title, image, description }: CardProps) => {
 
   return (
     <>
-      {/* Card */}
       <div
         onClick={handleOpen}
         className="relative bg-zinc-900 border border-white/5 rounded-[2rem] overflow-hidden hover:border-white/20 transition-all duration-500 group cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] hover:-translate-y-2 will-change-transform"
@@ -42,7 +40,6 @@ export const Card = memo(({ title, image, description }: CardProps) => {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           />
 
-          {/* Arrow Icon */}
           <div className="absolute top-4 right-4 z-20">
             <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,21 +62,17 @@ export const Card = memo(({ title, image, description }: CardProps) => {
         </div>
       </div>
 
-      {/* Modal */}
       {isOpen && typeof document !== 'undefined' && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
           onClick={handleClose}
         >
-          {/* Dark backdrop */}
           <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
 
-          {/* Modal Content — centered */}
           <div
             onClick={stopPropagation}
             className="relative z-10 w-full max-w-3xl max-h-[90vh] flex flex-col overflow-y-auto bg-zinc-900 border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in-up"
           >
-            {/* Close Button */}
             <button
               onClick={handleClose}
               aria-label="დახურვა"
@@ -90,7 +83,6 @@ export const Card = memo(({ title, image, description }: CardProps) => {
               </svg>
             </button>
 
-            {/* Image */}
             <div className="w-full aspect-video shrink-0 relative rounded-t-[2rem] overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10 pointer-events-none" />
               <img
@@ -101,7 +93,6 @@ export const Card = memo(({ title, image, description }: CardProps) => {
               />
             </div>
 
-            {/* Text Content */}
             <div className="p-6 md:p-10 relative z-20 shrink-0">
               <h2 className="text-xl md:text-3xl font-black text-white mb-6 tracking-wide leading-tight">
                 {title}

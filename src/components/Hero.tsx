@@ -43,13 +43,11 @@ export const Hero = memo(({ title, slogan }: HeroProps) => {
           {slogan}
         </p>
         
-        {/* Animated CTA Button */}
         <div className="flex justify-center">
           <Link
             to="/matches"
             className="relative inline-flex items-center gap-3 px-10 py-4 md:px-14 md:py-5 rounded-full bg-emerald-500 text-white font-black uppercase tracking-[0.2em] text-xs md:text-sm hover:bg-emerald-400 hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.5)] group"
           >
-            {/* Pulse rings */}
             <span className="absolute inset-0 rounded-full border-2 border-emerald-400 animate-ping opacity-20" />
             <span className="absolute inset-0 rounded-full border border-emerald-400/30 animate-pulse" />
             
@@ -59,7 +57,6 @@ export const Hero = memo(({ title, slogan }: HeroProps) => {
         </div>
       </div>
       
-      {/* Decorative Blur Orbs */}
       <div className="absolute -left-1/4 top-1/4 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[120px] pointer-events-none z-10" />
       <div className="absolute -right-1/4 bottom-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none z-10" />
     </section>

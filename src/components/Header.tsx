@@ -19,7 +19,6 @@ export const Header = memo(({ links }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
@@ -37,7 +36,6 @@ export const Header = memo(({ links }: HeaderProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-16' : 'h-24'}`}>
 
-          {/* Logo Section */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-4 group">
               <div className={`flex items-center justify-center p-2 shrink-0 bg-white/90 backdrop-blur-xl rounded-full shadow-md transition-all duration-500 ${
@@ -63,7 +61,6 @@ export const Header = memo(({ links }: HeaderProps) => {
             </Link>
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:block" aria-label="მთავარი ნავიგაცია">
             <ul className="flex items-center gap-6">
               {links.map((link) => {
@@ -86,7 +83,6 @@ export const Header = memo(({ links }: HeaderProps) => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -104,7 +100,6 @@ export const Header = memo(({ links }: HeaderProps) => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <nav aria-label="მობილური ნავიგაცია" className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-zinc-950/80 backdrop-blur-3xl saturate-150 border-white/10 absolute w-full left-0 ${isOpen ? 'max-h-[400px] border-b shadow-2xl' : 'max-h-0 border-b-0'}`}>
         <ul className="px-6 py-6 space-y-4">
           {links.map((link) => {

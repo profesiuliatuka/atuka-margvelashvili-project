@@ -48,13 +48,11 @@ export const Home = () => {
         >
           <div className="relative overflow-hidden rounded-[2.5rem] bg-zinc-950 border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
 
-            {/* Background Glows */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] group-hover:bg-emerald-500/30 transition-colors duration-700 pointer-events-none" />
             <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] group-hover:bg-emerald-500/20 transition-colors duration-700 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center justify-center py-16 px-4">
 
-              {/* League Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-12 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 ეროვნული ლიგა - ტური {nextMatch.round}
@@ -62,7 +60,6 @@ export const Home = () => {
 
               <div className="flex items-center justify-center gap-2 sm:gap-12 md:gap-24 w-full">
 
-                {/* Home Team */}
                 <div className="flex flex-col items-center w-20 sm:w-28 md:w-32 relative group/team cursor-pointer">
                   <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover/team:bg-white/10 transition-colors duration-500" />
                   <img
@@ -77,14 +74,12 @@ export const Home = () => {
                   <span className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-1 relative z-10">სახლი</span>
                 </div>
 
-                {/* VS Badge */}
                 <div className="flex flex-col items-center justify-center shrink-0">
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.8)] relative z-20">
                     <span className="text-emerald-400 font-black italic text-xl md:text-2xl tracking-tighter drop-shadow-[0_0_10px_rgba(16,185,129,0.8)]">VS</span>
                   </div>
                 </div>
 
-                {/* Away Team */}
                 <div className="flex flex-col items-center w-20 sm:w-28 md:w-32 relative group/team cursor-pointer">
                   <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover/team:bg-white/10 transition-colors duration-500" />
                   <img
@@ -100,7 +95,6 @@ export const Home = () => {
                 </div>
               </div>
 
-              {/* Date & Location Pill */}
               <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-4 bg-zinc-900/50 backdrop-blur-md px-6 md:px-10 py-4 rounded-3xl border border-white/5 shadow-xl w-fit">
                 <div className="flex items-center gap-3">
                   <span className="text-xl">📅</span>

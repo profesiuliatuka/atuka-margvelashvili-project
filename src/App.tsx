@@ -3,7 +3,6 @@ import { Suspense, lazy } from 'react';
 import { MainLayout } from './components/MainLayout';
 import { ScrollToTop } from './components/ScrollToTop';
 
-// Lazy loaded pages
 const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
 const About = lazy(() => import('./pages/About').then(module => ({ default: module.About })));
 const Team = lazy(() => import('./pages/Team').then(module => ({ default: module.Team })));
@@ -14,7 +13,6 @@ const NotFound = lazy(() => import('./pages/NotFound').then(module => ({ default
 const Terms = lazy(() => import('./pages/Terms').then(module => ({ default: module.Terms })));
 const Privacy = lazy(() => import('./pages/Privacy').then(module => ({ default: module.Privacy })));
 
-// Loading fallback
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
     <div className="w-10 h-10 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>

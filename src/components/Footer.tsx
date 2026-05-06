@@ -37,7 +37,6 @@ export const Footer = memo(({ links }: FooterProps) => {
   return (
     <footer className="relative bg-zinc-950 text-zinc-400 pt-20 pb-10 border-t border-white/5 mt-auto overflow-hidden">
       
-      {/* Background Glows (like match section) */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/15 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -63,7 +62,6 @@ export const Footer = memo(({ links }: FooterProps) => {
                   aria-label={social.label}
                   className={`group relative w-14 h-14 rounded-2xl border border-zinc-800 bg-zinc-900/80 backdrop-blur-sm flex items-center justify-center transition-all duration-500 hover:scale-110 hover:-translate-y-1 ${social.hoverColor}`}
                 >
-                  {/* Glow effect behind icon */}
                   <div className={`absolute inset-0 rounded-2xl transition-colors duration-500 ${social.glowColor} blur-sm opacity-0 group-hover:opacity-100`} />
                   <img
                     src={social.icon}
