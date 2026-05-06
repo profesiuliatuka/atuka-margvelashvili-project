@@ -33,7 +33,13 @@ export const News = () => {
                 : 'text-zinc-400 hover:text-white hover:bg-white/5 scale-95 hover:scale-100'
               }`}
             >
-              {cat === 'All' ? 'ყველა' : cat}
+              {
+                cat === 'All' ? 'ყველა' :
+                cat === 'First Team' ? 'პირველი გუნდი' :
+                cat === 'Academy' ? 'აკადემია' :
+                cat === 'Transfers' ? 'ტრანსფერი' :
+                cat === 'Club' ? 'კლუბი' : cat
+              }
             </button>
           ))}
         </div>

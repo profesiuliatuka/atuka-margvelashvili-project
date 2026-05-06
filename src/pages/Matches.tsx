@@ -8,7 +8,7 @@ type SortOrder = 'asc' | 'desc';
 
 export const Matches = () => {
   const [filter, setFilter] = useState<MatchFilter>('All');
-  const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
 
   useEffect(() => {
     document.title = 'კალენდარი და შედეგები | FC Torpedo Kutaisi';
@@ -52,6 +52,16 @@ export const Matches = () => {
     if (torpedoGoals > oppGoals) return 'text-emerald-400';
     if (torpedoGoals < oppGoals) return 'text-red-400';
     return 'text-zinc-300';
+  };
+
+  const getOrbColor = (item: MatchData) => {
+    if (item.status === 'Upcoming') return 'bg-emerald-500/5';
+    const isTorpedoHome = item.homeTeam.name === 'ტორპედო';
+    const torpedoGoals = isTorpedoHome ? item.homeScore! : item.awayScore!;
+    const oppGoals = isTorpedoHome ? item.awayScore! : item.homeScore!;
+    if (torpedoGoals > oppGoals) return 'bg-emerald-500/15';
+    if (torpedoGoals < oppGoals) return 'bg-red-500/15';
+    return 'bg-zinc-500/15';
   };
 
   const toggleSortOrder = useCallback(() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc'), []);
@@ -112,13 +122,15 @@ export const Matches = () => {
             const isFinished = item.status === 'Finished';
             const result = isFinished ? getResultBadge(item) : null;
             const scoreColor = getScoreColor(item);
+            const orbColor = getOrbColor(item);
 
             return (
               <div
                 key={item.id}
-                className="bg-zinc-950 border border-zinc-800 rounded-[2rem] overflow-hidden hover:border-emerald-500/40 transition-all duration-300 shadow-2xl"
+                className="relative bg-zinc-950 border border-white/5 rounded-[2rem] overflow-hidden hover:border-white/10 transition-all duration-300 shadow-2xl"
               >
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 px-4 sm:px-8 pt-8 pb-6 border-b border-zinc-800/60 text-center md:text-left">
+                <div className={`absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] ${orbColor} rounded-full blur-[120px] pointer-events-none`} />
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 px-4 sm:px-8 pt-8 pb-6 border-b border-white/5 text-center md:text-left">
                   <div className="flex flex-col gap-1.5 w-full md:w-auto md:min-w-[180px]">
                     <span className="text-emerald-400 font-mono text-sm font-bold tracking-wider">
                       {new Date(item.date).toLocaleDateString('ka-GE', {
